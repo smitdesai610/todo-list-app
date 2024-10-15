@@ -1,0 +1,464 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-image: url(../images/bg-desktop-light.jpg);
+  --background-mobile-image: url(../images/bg-mobile-light.jpg);
+  --background-color: #fafafa;
+  --primary-color: #ffffff;
+  --secondary-color: #5a6164;
+  --icon-color: #ffffff;
+  --controller-color: #484b6a;
+}
+
+.dark-themes {
+  --background-image: url(../images/bg-desktop-dark.jpg);
+  --background-mobile-image: url(../images/bg-mobile-dark.jpg);
+  --background-color: #161722;
+  --primary-color: #25273c;
+  --secondary-color: #d5d9e8;
+  --icon-color: #ffffff;
+  --controller-color: #ffffff;
+  /* Dark theme checkbox background */
+}
+.dark-themes .dark-themes .checkMark {
+  background-color: #333; /* Darker background for checkbox in dark theme */
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+picture,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-size: 100%;
+  background-image: var(--background-image);
+  background-repeat: no-repeat;
+  background-size: 100% 37vh;
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+@media screen and (max-width: 750px) {
+  body {
+    transition: var(--background-image) 3s ease;
+    background-image: var(--background-mobile-image);
+  }
+}
+body::-webkit-scrollbar {
+  width: 5px;
+}
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+body::-webkit-scrollbar-thumb {
+  background: #888;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+body main {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 750px) {
+  body main {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1025px) {
+  body main {
+    width: 60%;
+  }
+}
+body main .top {
+  width: 100%;
+}
+body main .top .header {
+  width: 100%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+body main .top .header .titleName span {
+  color: white;
+  letter-spacing: 8px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+body main .top .header .theamIcon {
+  cursor: pointer;
+}
+body main .top .header .theamIcon .theamIcon Img {
+  fill: var(--icon-color);
+  stroke: var(--icon-color);
+}
+body main .top .header .theamIcon .theamIcon Img .dark-themes .theamIcon Img {
+  display: none;
+}
+body main .top .header .theamIcon .theamIcon Img .show-icon .theamIcon Img {
+  display: block;
+}
+body main .top .inputContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+body main .top .inputContainer .checkBox {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .top .inputContainer .checkBox input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+body main .top .inputContainer .checkBox .checkMark {
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+body main .top .inputContainer .checkBox .checkMark svg {
+  display: none;
+}
+body main .top .inputContainer .checkBox .checkMark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 1px solid #808080;
+  transition: opacity 0.3s ease;
+}
+body main .top .inputContainer .checkBox .checkMark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: linear-gradient(to bottom right, #67cbe2, #7943aa) border-box;
+  -webkit-mask: linear-gradient(var(--primary-color) 0 0) padding-box, linear-gradient(var(--primary-color) 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+body main .top .inputContainer .checkBox .checkMark:hover::before {
+  opacity: 0;
+}
+body main .top .inputContainer .checkBox .checkMark:hover::after {
+  opacity: 1;
+}
+body main .top .inputContainer .checkBox input[type=checkbox]:checked + .checkMark {
+  background: linear-gradient(to bottom right, #67cbe2, #7943aa);
+  border-color: #58a6ff;
+}
+body main .top .inputContainer .checkBox input[type=checkbox]:checked + .checkMark svg {
+  display: block;
+  stroke: white;
+}
+body main .top .inputContainer .checkBox input[type=checkbox]:checked + .checkMark::after {
+  display: block;
+}
+body main .top .inputContainer .inputText {
+  margin-left: 10px;
+  flex-grow: 1;
+}
+body main .top .inputContainer .inputText input[type=text] {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+  color: var(--secondary-color);
+}
+body main .top .inputContainer .inputText input[type=text]::-moz-placeholder {
+  color: #bbb;
+}
+body main .top .inputContainer .inputText input[type=text]::placeholder {
+  color: #bbb;
+}
+body main .bottom {
+  width: 100%;
+  background-color: var(--primary-color);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+body main .bottom .todoList {
+  max-height: 310px; /* Approximately 6 items (48px each) */
+  display: flex;
+  flex-direction: column;
+}
+body main .bottom .todoList .listItemsWrapper {
+  overflow-y: auto;
+  height: 100%;
+}
+body main .bottom .todoList .listItemsWrapper::-webkit-scrollbar {
+  width: 5px;
+}
+body main .bottom .todoList .listItemsWrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+body main .bottom .todoList .listItemsWrapper::-webkit-scrollbar-thumb {
+  background: #888;
+}
+body main .bottom .todoList .listItemsWrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #d2d3db;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  text-wrap: wrap;
+  overflow: hidden;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item:last-child {
+  border: 0;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox .checkMark {
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox .checkMark svg {
+  display: none;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox .checkMark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 1px solid #808080;
+  transition: opacity 0.3s ease;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox .checkMark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: linear-gradient(to bottom right, #67cbe2, #7943aa) border-box;
+  -webkit-mask: linear-gradient(var(--primary-color) 0 0) padding-box, linear-gradient(var(--primary-color) 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox .checkMark:hover::before {
+  opacity: 0;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox .checkMark:hover::after {
+  opacity: 1;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox input[type=checkbox]:checked + .checkMark {
+  background: linear-gradient(to bottom right, #67cbe2, #7943aa);
+  border-color: #58a6ff;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox input[type=checkbox]:checked + .checkMark svg {
+  display: block;
+  stroke: white;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .checkBox input[type=checkbox]:checked + .checkMark::after {
+  display: block;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .todo-text {
+  flex: 1;
+  text-wrap: wrap;
+  overflow: hidden;
+  line-height: 1.25;
+  word-wrap: break-word;
+  margin-left: 10px;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .todo-text.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .close-icon {
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+body main .bottom .todoList .listItemsWrapper .todo-item .close-icon svg {
+  color: var(--controller-color);
+}
+body main .bottom .todoList .listItemsWrapper .todo-item:hover .close-icon {
+  opacity: 1;
+}
+body main .bottom .todoList .controller {
+  border-bottom: none;
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #9394a5;
+}
+body main .bottom .todoList .controller .toolBox {
+  font-weight: 700;
+  display: flex;
+  gap: 1rem;
+}
+@media screen and (max-width: 750px) {
+  body main .bottom .todoList .controller .toolBox {
+    display: none;
+  }
+}
+body main .bottom .todoList .controller .toolBox .all,
+body main .bottom .todoList .controller .toolBox .active,
+body main .bottom .todoList .controller .toolBox .Completed {
+  cursor: pointer;
+}
+body main .bottom .todoList .controller .toolBox .all:hover,
+body main .bottom .todoList .controller .toolBox .active:hover,
+body main .bottom .todoList .controller .toolBox .Completed:hover {
+  color: var(--controller-color);
+}
+body main .bottom .todoList .controller .clearCompleted {
+  cursor: pointer;
+}
+body main .bottom .todoList .controller .clearCompleted:hover {
+  color: var(--controller-color);
+}
+body main .newtoolBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  gap: 1rem;
+  width: 100%;
+  background-color: var(--primary-color);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 10px;
+  font-size: 14px;
+  color: #9394a5;
+}
+@media screen and (min-width: 750px) {
+  body main .newtoolBox {
+    display: none;
+  }
+}
+body main .newtoolBox .all,
+body main .newtoolBox .active,
+body main .newtoolBox .Completed {
+  cursor: pointer;
+}
+body main .newtoolBox .all:hover,
+body main .newtoolBox .active:hover,
+body main .newtoolBox .Completed:hover {
+  color: var(--controller-color);
+}
+body footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body footer p {
+  color: #9394a5;
+}/*# sourceMappingURL=main.css.map */

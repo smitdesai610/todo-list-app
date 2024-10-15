@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theam="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./scss/main.css" />
+    <title>Todo app</title>
+  </head>
+  <body>
+    <main>
+      <section class="top">
+        <div class="header">
+          <div class="titleName">
+            <span>TODO</span>
+          </div>
+          <div class="theamIcon">
+            <img src="./images/icon-moon.svg" alt="" class="moon" />
+          </div>
+        </div>
+        <form class="inputContainer">
+          <label class="checkBox">
+            <input type="checkbox" id="check" />
+            <span class="checkMark">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
+                <path
+                  fill="none"
+                  stroke="var(--icon-color)"
+                  stroke-width="2"
+                  d="M1 4.304L3.696 7l6-6"
+                />
+              </svg>
+            </span>
+          </label>
+          <div class="inputText">
+            <input
+              type="text"
+              id="todoInput"
+              placeholder="Create a new todo..."
+              autocomplete="off"
+            />
+          </div>
+        </form>
+      </section>
+
+      <section class="bottom">
+        <ul class="todoList">
+          <div class="listItemsWrapper" id="todoListWrapper"></div>
+          <div class="controller">
+            <div class="leftItem">
+              <p><span>0</span> items left</p>
+            </div>
+            <div class="toolBox">
+              <div class="all">
+                <span>All</span>
+              </div>
+              <div class="active">
+                <span>Active</span>
+              </div>
+              <div class="Completed">
+                <span>Completed</span>
+              </div>
+            </div>
+            <div class="clearCompleted">
+              <span>Clear Completed</span>
+            </div>
+          </div>
+        </ul>
+      </section>
+      <div class="newtoolBox">
+        <div class="all">
+          <span>All</span>
+        </div>
+        <div class="active">
+          <span>Active</span>
+        </div>
+        <div class="Completed">
+          <span>Completed</span>
+        </div>
+      </div>
+    </main>
+
+    <footer class="attribution">
+      <p>Drag and drop to reorder list</p>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
